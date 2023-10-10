@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alphabetical Filter</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom styles for the page */
+        body {
+            background-color: #54525e;
+        }
+
+        /* Custom styles for the filter buttons */
+        .filter-buttons {
+            margin-top: 20px;
+        }
+
+        .filter-buttons button {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Filter buttons -->
+        <div class="filter-buttons">
+            <button class="btn btn-primary" onclick="filterAlphabet('A')">A</button>
+            <button class="btn btn-primary" onclick="filterAlphabet('B')">B</button>
+            <button class="btn btn-primary" onclick="filterAlphabet('C')">C</button>
+            <button class="btn btn-primary" onclick="filterAlphabet('D')">D</button>
+            <button class="btn btn-primary" onclick="filterAlphabet('E')">E</button>
+            <button class="btn btn-primary" onclick="filterAlphabet('F')">F</button>
+            <button class="btn btn-primary" onclick="filterAlphabet('G')">G</button>
+            <button class="btn btn-primary" onclick="filterAlphabet('H')">H</button>
+            <!-- Add more buttons for other letters as needed -->
+            <button class="btn btn-secondary" onclick="clearFilter()">Clear Filter</button>
+        </div>
+
+        <!-- List of items to be filtered -->
+        <ul id="itemList" class="list-group mt-3">
+            <li class="list-group-item">Apple</li>
+            <li class="list-group-item">Banana</li>
+            <li class="list-group-item">Cherry</li>
+            <li class="list-group-item">Blueberry</li>
+            <li class="list-group-item">Grapes</li>
+            <li class="list-group-item">Dog</li>
+            <li class="list-group-item">document</li>
+            <li class="list-group-item">horse</li>
+            <li class="list-group-item">Cat</li>
+            <li class="list-group-item">Black</li>
+            <li class="list-group-item">cooler</li>
+            <li class="list-group-item">Egg</li>
+        </ul>
+    </div>
+
+    <!-- Include Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Function to filter items alphabetically
+        function filterAlphabet(letter) {
+            const itemList = document.getElementById('itemList');
+            const items = itemList.getElementsByTagName('li');
+
+            for (let i = 0; i < items.length; i++) {
+                const item = items[i];
+                const text = item.textContent.trim().toUpperCase();
+
+                if (text.startsWith(letter)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            }
+        }
+
+        // Function to clear the alphabetical filter
+        function clearFilter() {
+            const itemList = document.getElementById('itemList');
+            const items = itemList.getElementsByTagName('li');
+
+            for (let i = 0; i < items.length; i++) {
+                items[i].style.display = '';
+            }
+        }
+    </script>
+</body>
+</html>
